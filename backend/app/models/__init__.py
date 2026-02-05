@@ -1,4 +1,5 @@
 from .answer import Answer
+from .faq import Faq
 from .follow import Follow
 from .question import Question
 from .question_tag import QuestionTag
@@ -16,4 +17,5 @@ __all__ = [
     "Vote",
     "Follow",
     "RelatedQuestion",
+    "Faq",
 ]
