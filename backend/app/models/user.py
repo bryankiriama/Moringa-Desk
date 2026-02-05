@@ -9,6 +9,8 @@ from app.core.database import Base
 
 
 class User(Base):
+    """User account model for authentication and roles."""
+
     __tablename__ = "users"
 
     id: Mapped[str] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid4)
