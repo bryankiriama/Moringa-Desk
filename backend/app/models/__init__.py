@@ -1,4 +1,6 @@
 from .question import Question
+from .question_tag import QuestionTag
+from .tag import Tag
 from .user import User
 
-__all__ = ["User", "Question"]
+__all__ = ["User", "Question", "Tag", "QuestionTag"]
