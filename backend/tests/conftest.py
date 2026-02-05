@@ -10,13 +10,18 @@ from sqlalchemy.orm import sessionmaker
 BASE_DIR = Path(__file__).resolve().parents[1]
 sys.path.append(str(BASE_DIR))
 
+# Provide safe defaults so settings can load during tests.
+DUMMY_DB_URL = "postgresql+psycopg://dummy:dummy@localhost:5432/dummy"
+os.environ.setdefault("DATABASE_URL", DUMMY_DB_URL)
+os.environ.setdefault("JWT_SECRET", "test-secret")
+
 from app.core.database import Base
 
 
 @pytest.fixture(scope="session")
 def db_url() -> str:
     url = os.getenv("TEST_DATABASE_URL") or os.getenv("DATABASE_URL")
-    if not url:
+    if not url or url == DUMMY_DB_URL:
         pytest.skip("TEST_DATABASE_URL or DATABASE_URL is required for DB tests")
     return url
 
