@@ -1,8 +1,14 @@
 import os
+import sys
+from pathlib import Path
 
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+# Ensure backend/app is on the import path for tests.
+BASE_DIR = Path(__file__).resolve().parents[1]
+sys.path.append(str(BASE_DIR))
 
 from app.core.database import Base
 
